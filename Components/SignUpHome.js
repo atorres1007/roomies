@@ -3,8 +3,8 @@ import { StyleSheet, Text, View,
   import Icon from 'react-native-vector-icons/AntDesign'
   import { NavigationContainer } from '@react-navigation/native'
   import { createNativeStackNavigator } from '@react-navigation/native-stack';
-  import SignUpEmail from './Components/SignUpEmail';
-  import SignUpPhone from './Components/SignUpPhone';
+  import SignUpEmail from './RoomiesComponents/SignUpEmail';
+  import SignUpPhone from './RoomiesComponents/SignUpPhone';
   
   function SignUpHomePage({ navigation }) {
     return (
