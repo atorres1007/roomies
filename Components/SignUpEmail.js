@@ -55,9 +55,22 @@ export default function SignUpEmail() {
     passwordErrorHandling()
   }, [password]);
 
+  /*const [apiData, setApiData] = useState([])
+  //experimental
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:5000")
+      .then((response) => response.json())
+      .then((json) => setApiData(json))
+      .catch((error) => console.error(error))
+  }, []);
+
+*/
+  //ex
     return (
       <SafeAreaView style={styles.container} >
         <View style={{flex:1}}></View>
+        <View><Text>{JSON.stringify(apiData)}</Text></View>
         <ScrollView style={{flexGrow:3}} scrollEnabled={false}>
           <View style={{flex:2}}>
             <Text style={styles.topBarTitle}>LOGIN</Text>
@@ -80,7 +93,6 @@ export default function SignUpEmail() {
             placeholderTextColor="#1B3651"
             onChangeText={newUsername => setUsername(newUsername)}
             value = {username}
-            autoFocus={true}
             />
             <Text style={styles.errorMessage}>{usernameErrorMessage}</Text>
             <TextInput
@@ -91,6 +103,7 @@ export default function SignUpEmail() {
             onChangeText={newPassword => setPassword(newPassword)}
             value = {password}
             />
+            <Text style={styles.errorMessage}>{passwordErrorMessage}</Text>
           </View>
         </ScrollView>
         <View style={styles.buttonContainer}>
