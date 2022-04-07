@@ -10,7 +10,7 @@ export default function SignUpPhone () {
     return (
         <SafeAreaView style={styles.container}>
             <View style={{flex:3}}></View>
-            <ScrollView style={{flexGrow:1}}>
+            <ScrollView style={{flexGrow:1}} scrollEnabled={false}>
                 <View >
                     <Text style={styles.topBarTitle}>LOGIN</Text>
                 </View>  
