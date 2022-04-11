@@ -17,7 +17,9 @@ app.get('/', (request, response) => {
 })
 
 app.get('/users', db.getAllUsers)
+app.get('/users-email', db.getAllUsersEmail)
 app.get('/users/:id', db.getUserById)
+app.get('/users-email/:email', db.getUserByEmail)
 app.post('/users', db.createUser)
 app.put('/users/:id', db.updateUser)
 app.delete('/users/:id', db.deleteUser)

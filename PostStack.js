@@ -1,28 +1,34 @@
 import { StyleSheet, Text, View, 
-  TouchableOpacity, SafeAreaView } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+  TouchableOpacity, SafeAreaView, TabBarIOSItem } from 'react-native';
 import Home from './Components/Home';
-
-  function HomePage() {
-    return(
-      <Home />
-    );
-  }
-  
-  const Stack = createNativeStackNavigator();
-  
-  export default function PostStack() {
-    return (
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName='HomePage'>
-          <Stack.Screen name="HomePage" component={HomePage} 
+import SettingsStack from './Components/Settings/SettingsStack'
+import Messages from './Components/Messages'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+ export default function PostStack() {
+  const Tab = createBottomTabNavigator();
+  return (
+        <Tab.Navigator initialRouteName='HomeScreen' 
+        screenOptions={{
+          tabBarShowLabel: false,
+          tabBarStyle: {backgroundColor: "#2E5A88"},
+          tabBarActiveTintColor: "white",
+          tabBarInactiveTintColor: "black"}}>
+          <Tab.Screen name="SettingsStack" component={SettingsStack} 
           options={({ navigation }) => ({ 
             headerTransparent: true,
-            headerTitle: ""
+            headerTitle: "",
           })}/>
-        </Stack.Navigator>
-      </NavigationContainer>
+          <Tab.Screen name="HomeScreen" component={Home} 
+          options={({ navigation }) => ({ 
+            headerTransparent: true,
+            headerTitle: "",
+          })}/>
+          <Tab.Screen name="MessagesScreen" component={Messages} 
+          options={({ navigation }) => ({ 
+            headerTransparent: true,
+            headerTitle: "",
+          })}/>
+        </Tab.Navigator>
     );
   } 
   

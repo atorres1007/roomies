@@ -16,6 +16,14 @@ const getAllUsers = (request, response) => {
         response.status(200).json(results.rows)
     })
 }
+const getAllUsersEmail = (request, response) => {
+    pool.query('SELECT email FROM users', (error, results) => {
+        if (error) {
+            throw error
+        }
+        response.status(200).json(results.rows)
+    })
+}
 const getUserById = (request, response) => {
     const id = parseInt(request.params.id)
     pool.query('SELECT * FROM users WHERE id = $1', [id], (error, results) => {
@@ -25,9 +33,18 @@ const getUserById = (request, response) => {
     response.status(200).json(results.rows)
     })
 }
+const getUserByEmail = (request, response) => {
+    const email = request.params.email
+    pool.query('SELECT * FROM users WHERE email = $1', [email], (error, results) => {
+        if (error) {
+            throw error
+        }
+    response.status(200).json(results.rows)
+    })
+}
 const createUser = (request, response) => {
     const { email, username, password } = request.body 
-    pool.query('INSERT INTO users (email, username, password, phone_number) VALUES ($1, $2, $3, $4)', 
+    pool.query('INSERT INTO users (email, username, password) VALUES ($1, $2, $3)', 
     [email, username, password], (error, results) => {
         if (error) {
             throw error
@@ -62,7 +79,9 @@ const deleteUser = (request, response) => {
 }
 module.exports = {
     getAllUsers,
+    getAllUsersEmail,
     getUserById,
+    getUserByEmail,
     createUser,
     updateUser,
     deleteUser,

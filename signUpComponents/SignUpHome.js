@@ -1,11 +1,16 @@
 import { StyleSheet, Text, View, 
   TouchableOpacity, SafeAreaView } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, StackActions } from '@react-navigation/native'
 
 
 export default function SignUpHomePage() {
   const navigation = useNavigation();
+  const goHome = () => {
+    navigation.dispatch(
+      StackActions.replace('PostStackNavigator')
+    )
+  }
   return (
     <SafeAreaView style={styles.background}>
       <View style={{flex:3}}></View>
@@ -15,33 +20,34 @@ export default function SignUpHomePage() {
       <View style={{flex:4}}>
         <TouchableOpacity style={styles.continueButton}>
           <View style={styles.buttonContainer}>
-            <Text style={styles.signInButton}>Sign In with Apple</Text>
+            <Text style={styles.signInButton}>Sign Up with Apple</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity style={styles.continueButton}>
           <View style={styles.buttonContainer}>
-            <Text style={styles.signInButton}>Sign In with Facebook</Text>
+            <Text style={styles.signInButton}>Sign Up with Facebook</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity style={styles.continueButton}>
           <View style={styles.buttonContainer}>
-            <Text style={styles.signInButton}>Sign In with Apple</Text>
+            <Text style={styles.signInButton}>Sign Up with Apple</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity style={styles.continueButton} 
         onPress={() => navigation.navigate('SignUpEmailPage')}>
           <View style={styles.buttonContainer}>
-            <Text style={styles.signInButton}>Sign In with Email</Text>
+            <Text style={styles.signInButton}>Sign Up with Email</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity style={styles.continueButton} 
         onPress={() => navigation.navigate('SignUpPhonePage')}>
           <View style={styles.buttonContainer}>
-            <Text style={styles.signInButton}>Sign In with Phone Number</Text>
+            <Text style={styles.signInButton}>Sign Up with Phone Number</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity style={{alignSelf:'center'}}>
-          <Text style={{color:'white', fontSize: 18}}>Trouble?</Text>
+        <TouchableOpacity style={{alignSelf:'center'}} 
+        onPress={goHome}>
+          <Text style={{color:'white', fontSize: 18}}>Already Have An Account? Sign In</Text>
         </TouchableOpacity>
       </View>
       <View style={{flex:1}}></View>
