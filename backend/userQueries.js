@@ -1,11 +1,9 @@
 require('dotenv').config({ path: './config/.env'})
-const { Pool } = require('pg')
-const pool = new Pool({
-    user: process.env.PGUSER,
-    host: process.env.PGHOST,
-    database: process.env.PGDATABASE,
-    password: process.env.PGPASSWORD,
-    port: process.env.PGPORT
+const connection = mysql.createPool({
+    host: process.env.MYSQLHOST,
+    user: process.env.MYSQLUSER,
+    password: process.env.MYSQPASSWORD,
+    database: process.env.MYSQLDATABASE
 });
 
 const getAllUsers = (request, response) => {
@@ -77,6 +75,9 @@ const deleteUser = (request, response) => {
         response.status(200).send(`User deleted with ID: ${id}`)
     })
 }
+app.listen(3000, () => {
+ console.log('Go to http://localhost:3000/users so you can see the data.');
+});
 module.exports = {
     getAllUsers,
     getAllUsersEmail,

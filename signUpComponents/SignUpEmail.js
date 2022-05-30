@@ -1,9 +1,9 @@
 import { Text, View, SafeAreaView, 
     StyleSheet, TextInput, TouchableOpacity, 
     ScrollView } from 'react-native';
+  import axios from 'axios';
   import { useState, useEffect } from 'react';
   import Icon from 'react-native-vector-icons/AntDesign'
-  import axios from 'axios'
   import { useNavigation, StackActions } from '@react-navigation/native'
   import { useValidation } from 'react-native-form-validator';
   
@@ -18,36 +18,47 @@ import { Text, View, SafeAreaView,
     const [userPassword, setUserPassword] = useState("")
     const [userAuthorized, setUserAuthorized] = useState(false)
 
-    useEffect(() => {
+    const createUser = () => {
+      axios({
+        url: 'http://10.0.0.60:8000/user/create',
+        method: 'post',
+        data: {
+          username: `${username}`,
+          password: `${password}`,
+          email: `${email}`
+        }
+      })
+      .then(console.log("dummy"))
+    }
+    /*useEffect(() => {
       getAllUsers()
     },[])
-
+    
     const getAllUsers = () => {
       axios({
-        url: 'http://10.0.0.60:8000/users-email',
+        url: 'http://10.0.0.60:8000/',
         method: 'get'
       })
       .then(function(response){
         const users = response.data
         const userEmails = users.map((user) => {
           return (user.email)})
-        setUserEmails(userEmails)})}
+        setUserEmails(userEmails)})}*/
 
-    const createUser = () => {
-      axios({
-        method: 'post',
-        url: "http://10.0.0.60:8000/users",
-        data: {
-          email: `${email}`,
-          username: `${username}`,
-          password: `${password}`
-        }})
+    /*const createUser = () => {
+      fetch("http://10.0.0.60:8000/user/create", {
+        method: 'POST',
+
+        body: {
+        email: `${email}`, username: `${username}`, password: `${password}`
+        }
+      })
       .then(function(response){
         console.log(response.data)
       })
-      .then(navigateHome)}
+      .then(navigateHome)}*/
    
-    const checkEmail = () => {
+    /*const checkEmail = () => {
       axios({
         url: `http://10.0.0.60:8000/users-email/${email}`,
         method: 'get'
@@ -61,7 +72,7 @@ import { Text, View, SafeAreaView,
         {userUsername === username 
           && userPassword === password ? 
           navigation.navigate('HomePage') 
-        : setUserAuthorized(false)}})}
+        : setUserAuthorized(false)}})}*/
 
     const submitUser = () => {
       if (userEmails.includes(`${email}`)) 
@@ -117,7 +128,7 @@ import { Text, View, SafeAreaView,
           </ScrollView>
           <View style={styles.buttonContainer}>
             <TouchableOpacity style={styles.continueButton} 
-            onPress={navigateHome}>
+            onPress={createUser}>
                 <View style={styles.buttonStyling}>
                   <Icon name="right" size={50} color="white"/>
                 </View>        

@@ -7,7 +7,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SignUpHome from './signUpComponents/SignUpHome';
 import SignUpEmail from './signUpComponents/SignUpEmail';
 import SignUpPhone from './signUpComponents/SignUpPhone';
-import SignInUserAndPass from './signUpComponents/SignInUserAndPass';
 import PostStack from './PostStack';
   global.isLoggedIn = false
 export default function PreStack() {
@@ -45,24 +44,13 @@ export default function PreStack() {
                 </TouchableOpacity>
                 )
             })}/>
-            <Stack.Screen name="SignInUserAndPassPage" component={SignInUserAndPass} 
-            options={({ navigation }) => ({ 
-              headerBackTitleVisible: false,
-              headerTransparent: true, 
-              headerTitle: "",
-              headerLeft: () => (
-                <TouchableOpacity style={{marginTop:10}} onPress={() => navigation.goBack()}>
-                  <Icon name="left" size={30}/>
-                </TouchableOpacity>
-                )
-            })}/>
             <Stack.Screen name="PostStackNavigator" 
             component={PostStack} 
             options={({ navigation }) => ({ 
               headerBackTitleVisible: false,
               headerStyle: {backgroundColor: "#2E5A88"}, 
               headerTitle: "ROOMIES",
-              headerTitleStyle: {color: "white"},
+              headerTitleStyle: {color: "silver"},
             })}/>
           </Stack.Navigator>
         </NavigationContainer>
