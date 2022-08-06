@@ -39,7 +39,7 @@ export default function PostStack() {
           headerTransparent: true,
           headerTitle: "",
           tabBarIcon: ({tintColor}) => (
-            <HomeIcon name ='documents' size={iconSize} color={tintColor} />
+            <HomeIcon name ='documents' size={iconSize} color={'#F8F8FF'} />
           ),
           tabBarActiveTintColor: "silver",
           tabBarInactiveTintColor: "#404040"

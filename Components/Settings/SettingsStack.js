@@ -23,14 +23,18 @@ export default function SettingsStack() {
                             headerTransparent: true, 
                             headerTitle: "",
                             headerShown:false,
-                            headerLeft: () => ( null
-                            )
+                            headerLeft: () => (
+                                <TouchableOpacity style={{marginTop:20}} onPress={() => navigation.goBack()}>
+                                  <Icon name="left" size={30}/>
+                                </TouchableOpacity>
+                                )
                           })}/>
            <Stack.Screen name='ProfileScreen' component={Profile} 
             options={({ navigation }) => ({ 
                 headerBackTitleVisible: false,
                 headerTransparent: true, 
                 headerTitle: "",
+                headerBackVisible:false,
               })}/>
             <Stack.Screen name='OptionsScreen' component={Options} 
             options={({ navigation }) => ({ 
@@ -39,7 +43,7 @@ export default function SettingsStack() {
                 headerTitle: "",
                 headerLeft: () => (
                   <TouchableOpacity style={{marginTop:10}} onPress={() => navigation.goBack()}>
-                    <Icon name="left" size={30}/>
+                    <Icon name="left" size={50}/>
                   </TouchableOpacity>
                   )
               })}/>

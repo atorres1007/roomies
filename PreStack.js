@@ -50,7 +50,7 @@ export default function PreStack() {
               headerBackTitleVisible: false,
               headerStyle: {backgroundColor: "#2E5A88"}, 
               headerTitle: "ROOMIES",
-              headerTitleStyle: {color: "silver"},
+              headerTitleStyle: {color: "#F8F8FF"},
             })}/>
           </Stack.Navigator>
         </NavigationContainer>

@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, ScrollView,
     TouchableOpacity, SafeAreaView, Image,
     useWindowDimensions,
     Dimensions} from 'react-native';
-import { deviceHeight, deviceWidth } from './Home';
+import { deviceHeight, deviceWidth, roomieBlue, roomieWhite } from './Home';
 
 export default function Messages() {
     const data = [
@@ -21,7 +21,7 @@ export default function Messages() {
     })
     const displayMessages = data.map(i =>  {
         return (
-            <TouchableOpacity style={{borderTopWidth: 1, borderBottomWidth: 1, marginBottom:0.01}}>
+            <TouchableOpacity style={styles.messageIndividual}>
                 <Image key={i.name} source={i.img} style={styles.thumbnail}/>
                 <View style={{position:'absolute', left: deviceWidth/4}}>
                     <Text style={styles.messagesNames}>{i.name}</Text>
@@ -32,17 +32,19 @@ export default function Messages() {
         );
     })
     return(
-        <SafeAreaView style={{flex:1}}>
-            <View style={styles.matches}>
-                <Text>Matches</Text>
-                <ScrollView horizontal={true}>    
-                    <View style={{flexDirection: 'row'}}>{displayMatches}</View>
+        <SafeAreaView style={{flex:1, backgroundColor:roomieWhite}}>
+            <View style={{flex:3, backgroundColor: roomieWhite}}>
+                <Text style={{marginLeft:5, fontSize:20, fontWeight: '500'}}>Matches</Text>
+                <View style={styles.matchesContainer}>
+                <ScrollView horizontal={true} style={{borderRadius:5}}>    
+                    <View style={styles.matches}>{displayMatches}</View>
                 </ScrollView>
+                </View>
             </View>
             <View style={styles.messages}>
-                <ScrollView >
-                    <Text style={{fontSize:20, fontWeight:'500'}}>messages</Text>
-                    <View>{displayMessages}</View>
+                <Text style={{fontSize:20, fontWeight:'500', marginLeft: 5}}>Messages</Text>
+                <ScrollView>    
+                    <View style={styles.messageContainer}>{displayMessages}</View>
                 </ScrollView>
             </View>
 
@@ -59,9 +61,18 @@ const styles = StyleSheet.create({
         width: deviceWidth,
         backgroundColor: "white"
     },
-    matches:{
-        flex:3,
-        backgroundColor: 'silver'
+    matchesContainer:{
+        margin:5, 
+        borderRadius:5, 
+        backgroundColor: roomieWhite, 
+        shadowOpacity: 0.5, 
+        shadowColor: roomieBlue,
+        shadowOffset: {height: 2}
+    },
+    matches: {
+        flexDirection: 'row',
+        borderRadius: 5,
+        backgroundColor: roomieWhite,
     },
     matchesNames: {
         alignSelf:'center',
@@ -70,19 +81,36 @@ const styles = StyleSheet.create({
     },
     messages: {
         flex:15,
-        backgroundColor: "white",
-        borderTopWidth: 3
+        backgroundColor: roomieWhite,
+        marginTop: 25,
     },
     messagesNames: { 
         fontSize: deviceWidth/18,
         fontWeight:'600',
-        paddingBottom: deviceHeight/40
+        paddingBottom: deviceHeight/40, 
+        paddingTop: 5
+    },
+    messageContainer: {
+        marginTop:3, 
+        backgroundColor:roomieWhite
+    },
+    messageIndividual:{
+        borderBottomWidth: 0, 
+        borderRadius:5,
+        paddingBottom: 3, 
+        paddingTop:3, 
+        margin:5, 
+        backgroundColor: roomieWhite, 
+        shadowOpacity:0.5,
+        shadowColor: roomieBlue,
+        shadowOffset: {height: 2}
     },
     thumbnail: {
         width: deviceWidth/5,
         height: deviceHeight/11,
         borderWidth:2,
-        borderRadius:50,
-        borderColor: '#2E5A88'
+        borderRadius: 50,
+        borderColor: roomieBlue, 
+        marginLeft: 5
     }
 });

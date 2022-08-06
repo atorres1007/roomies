@@ -6,10 +6,6 @@ export default function Info() {
     const navigation = useNavigation();
     return(
         <View style={{marginTop:0}}>
-            <TouchableOpacity onPress={() => navigation.navigate("SettingsHomeScreen")}>
-                <Icon name="left" size={30}/>
-            </TouchableOpacity>
-            
             <Text>Info</Text>
         </View>
     );

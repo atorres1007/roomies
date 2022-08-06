@@ -15,7 +15,7 @@ export default function SignUpHomePage() {
     <SafeAreaView style={styles.background}>
       <View style={{flex:3}}></View>
       <View style={{flex: 3}}>
-        <Text style={{fontSize: 30, alignSelf:'center', color: 'white', fontWeight: '700'}}>Roomies</Text>
+        <Text style={{fontSize: 30, alignSelf:'center', color: '#F8F8FF', fontWeight: '700'}}>Roomies</Text>
       </View>
       <View style={{flex:4}}>
         <TouchableOpacity style={styles.continueButton}>
@@ -47,7 +47,7 @@ export default function SignUpHomePage() {
         </TouchableOpacity>
         <TouchableOpacity style={{alignSelf:'center'}} 
         onPress={goHome}>
-          <Text style={{color:'white', fontSize: 18}}>Already Have An Account? Sign In</Text>
+          <Text style={{color:'#F8F8FF', fontSize: 18}}>Already Have An Account? Sign In</Text>
         </TouchableOpacity>
       </View>
       <View style={{flex:1}}></View>
@@ -66,7 +66,7 @@ export default function SignUpHomePage() {
       width: '90%',
       borderWidth: 2,
       justifyContent:'center',
-      backgroundColor: 'white', 
+      backgroundColor: '#F8F8FF', 
       borderRadius: 20,
       alignSelf: "center",
       marginBottom: "1%"
